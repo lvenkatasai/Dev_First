@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BMI Calculator</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 50px; }
+    input { margin: 5px; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h2>BMI Calculator</h2>
+  <input type="number" id="weight" placeholder="Weight (kg)">
+  <input type="number" id="height" placeholder="Height (m)">
+  <button onclick="calculateBMI()">Calculate</button>
+  <div id="result"></div>
+
+  <script>
+    function calculateBMI() {
+      const w = parseFloat(document.getElementById("weight").value);
+      const h = parseFloat(document.getElementById("height").value);
+      if (w > 0 && h > 0) {
+        const bmi = w / (h * h);
+        document.getElementById("result").innerText = "Your BMI is: " + bmi.toFixed(2);
+      } else {
+        document.getElementById("result").innerText = "Enter valid numbers.";
+      }
+    }
+  </script>
+</body>
+</html>

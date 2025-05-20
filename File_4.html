@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Picker</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    #colorBox { height: 100px; width: 100%; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Color Picker</h2>
+  <input type="color" id="picker" onchange="changeColor()">
+  <div id="colorBox"></div>
+
+  <script>
+    function changeColor() {
+      const color = document.getElementById("picker").value;
+      document.getElementById("colorBox").style.backgroundColor = color;
+    }
+  </script>
+</body>
+</html>
