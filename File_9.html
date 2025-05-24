@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Digital Clock</title>
+  <meta charset="UTF-8">
+  <title>Character Counter</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
-    #clock { font-size: 48px; font-weight: bold; }
+    body { font-family: Arial; padding: 20px; text-align: center; }
+    textarea { width: 300px; height: 100px; padding: 10px; }
   </style>
 </head>
 <body>
-  <h2>Digital Clock</h2>
-  <div id="clock"></div>
+  <h2>Character & Word Counter</h2>
+  <textarea id="text" oninput="countChars()"></textarea>
+  <p id="output"></p>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock").innerText = now.toLocaleTimeString();
+    function countChars() {
+      const text = document.getElementById("text").value;
+      const chars = text.length;
+      const words = text.trim().split(/\s+/).filter(word => word).length;
+      document.getElementById("output").innerText =
+        `Characters: ${chars} | Words: ${words}`;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
   </script>
 </body>
 </html>

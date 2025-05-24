@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Digital Clock</title>
+  <meta charset="UTF-8">
+  <title>Random Quote Generator</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
-    #clock { font-size: 48px; font-weight: bold; }
+    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; background: #f0f0f0; }
+    #quote-box { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; display: inline-block; }
+    button { margin-top: 20px; padding: 10px 20px; cursor: pointer; border: none; background: #007bff; color: white; border-radius: 5px; }
   </style>
 </head>
 <body>
-  <h2>Digital Clock</h2>
-  <div id="clock"></div>
+  <div id="quote-box">
+    <h2 id="quote">Click below to get a quote</h2>
+    <p id="author"></p>
+    <button onclick="newQuote()">New Quote</button>
+  </div>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock").innerText = now.toLocaleTimeString();
+    const quotes = [
+      { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+      { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+      { text: "Your time is limited, so don't waste it living someone else's life.", author: "Steve Jobs" },
+      { text: "Stay hungry, stay foolish.", author: "Steve Jobs" },
+      { text: "Code is like humor. When you have to explain it, it’s bad.", author: "Cory House" }
+    ];
+
+    function newQuote() {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote").textContent = `"${random.text}"`;
+      document.getElementById("author").textContent = `— ${random.author}`;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
   </script>
 </body>
 </html>

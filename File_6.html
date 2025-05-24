@@ -1,23 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Digital Clock</title>
+  <meta charset="UTF-8">
+  <title>Tip Calculator</title>
   <style>
-    body { font-family: Arial; text-align: center; margin-top: 100px; }
-    #clock { font-size: 48px; font-weight: bold; }
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    input, select { padding: 8px; margin: 10px; }
   </style>
 </head>
 <body>
-  <h2>Digital Clock</h2>
-  <div id="clock"></div>
+  <h2>Tip Calculator</h2>
+  <input type="number" id="amount" placeholder="Bill Amount">
+  <input type="number" id="tip" placeholder="Tip %">
+  <input type="number" id="people" placeholder="No. of People">
+  <button onclick="calculateTip()">Calculate</button>
+  <h3 id="result"></h3>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      document.getElementById("clock").innerText = now.toLocaleTimeString();
+    function calculateTip() {
+      const bill = parseFloat(document.getElementById("amount").value);
+      const tip = parseFloat(document.getElementById("tip").value);
+      const people = parseInt(document.getElementById("people").value);
+      if (bill && tip && people) {
+        const totalTip = (bill * tip / 100);
+        const total = bill + totalTip;
+        const perPerson = total / people;
+        document.getElementById("result").innerText =
+          `Total: ₹${total.toFixed(2)} | ₹${perPerson.toFixed(2)} each`;
+      } else {
+        document.getElementById("result").innerText = "Please fill all fields.";
+      }
     }
-    setInterval(updateClock, 1000);
-    updateClock();
   </script>
 </body>
 </html>
+
